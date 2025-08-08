@@ -44,12 +44,12 @@ export default function Loginpage() {
   return (
     <div className="flex justify-center items-center min-h-[calc(100vh-3.6rem)] ">
       
-      <div className="size-96 rounded-lg border p-8 content-center relative">
+      <div className="size-80 sm:size-96 rounded-lg border p-8 content-center relative">
       <button type="button" className="absolute top-2 right-2.5 size-5 rounded-full border text-sm cursor-pointer"
        onClick={handleClick}> i</button>
       {
         isShow && (
-          <div className=" absolute top-0 -right-60 border rounded-lg p-4">
+          <div className=" absolute -top-24 left-10 sm:left-100 lg:top-0 lg:-right-70 border rounded-lg p-4">
               <p>Email: john.doe@gmail.com</p>
               <p>Password: 11111111</p>
           </div>

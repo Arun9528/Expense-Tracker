@@ -47,7 +47,7 @@ export default function Modal({ title, setIsModal }: ModalProps) {
   };
   return (
     <div className="fixed inset-0 h-screen bg-black/50 z-10 flex justify-center items-center" onClick={()=> setIsModal(false)}>
-      <div className="w-3xl h-9/12 bg-white dark:bg-gray-800 rounded-lg p-3" onClick={(e)=> e.stopPropagation()}>
+      <div className=" w-md sm:w-3xl h-9/12 bg-white dark:bg-gray-800 rounded-lg p-3" onClick={(e)=> e.stopPropagation()}>
         <div className="flex justify-between items-center pb-2.5 ">
           <h2 className="text-2xl font-semibold">Add {title}</h2>
           <IoMdClose

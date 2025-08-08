@@ -29,7 +29,7 @@ export default function SelectMenu({title}:{title:"Income" | "Expense" | "alltra
         }
     },[])
      return (
-         <select className="w-full py-1.5 md:w-24 border rounded-md dark:bg-gray-900 divWidth" onChange={handleChange} value={selected} >
+         <select className="py-0.5 sm:py-1.5 w-20 sm:w-24 border rounded-md dark:bg-gray-900 divWidth" onChange={handleChange} value={selected} >
                 <option value="all">All</option>
                 <option value="1Week">1 Week</option>
                 <option value="2Week">2 Week</option>

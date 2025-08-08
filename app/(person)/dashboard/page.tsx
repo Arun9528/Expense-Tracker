@@ -12,7 +12,7 @@ import useRequireAuth from "@/hook/useRequireAuth";
 export default function DashBoard() {
   useRequireAuth();
   return (
-    <div className="flex-1 p-8 space-y-7">
+    <div className="flex-1 p-3 py-8 sm:p-8 space-y-7">
       <DashBoardTotal/>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-7">
         

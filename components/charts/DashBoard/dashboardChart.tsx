@@ -1,4 +1,5 @@
 "use client";
+import useIsSmBreakPoint from "@/hook/useIsSmBreakPoint";
 import { RootState } from "@/store";
 import { useSelector } from "react-redux";
 import {
@@ -23,6 +24,11 @@ export function DashBoardChart() {
     { name: "Total Expense", value: getExpenseTotal},
   ];
   const COLORS = ["#8200DB", "#FF8904", "#E7000B"];
+ const isSm = useIsSmBreakPoint();
+ const innerR = isSm ? 110 : 100;
+ const outerR = isSm ? 140 : 130;
+ const Ytext1 = isSm ? "48%" : "54%";
+ const Ytext2 = isSm ? "54%"  : "60%";
   return (
     <ResponsiveContainer width="100%" height="100%">
       <PieChart>
@@ -30,8 +36,8 @@ export function DashBoardChart() {
           data={datas}
           cx="50%"
           cy="50%"
-          innerRadius={110}
-          outerRadius={140}
+          innerRadius={innerR}
+          outerRadius={outerR}
           fill="#8884d8"
           dataKey="value"
           nameKey="name"
@@ -49,7 +55,7 @@ export function DashBoardChart() {
         </Pie>
         <text
           x="50%"
-          y="48%"
+          y={Ytext1}
           textAnchor="middle"
           dominantBaseline="central"
           style={{ fontSize: 16, fill: "#666" }}
@@ -58,7 +64,7 @@ export function DashBoardChart() {
         </text>
         <text
           x="50%"
-          y="54%"
+          y={Ytext2}
           textAnchor="middle"
           dominantBaseline="central"
           style={{ fontSize: 20, fontWeight: "bold", fill: "#333" }}

@@ -91,9 +91,9 @@ export default function TransactionsData({
           <Link href={`/${pathName}`} className="flex items-center border border-gray-300 bg-gray-100 cursor-pointer rounded-md 
           px-4 py-1 hover:text-purple-700 font-semibold dark:text-black text-[14px] " >See All &nbsp; <FaArrowRight /></Link>
         ) : (
-        <div className="space-x-5">
+        <div className="flex items-center gap-x-3">
           <SelectMenu title={pathName}/>
-          <button type="button" className="px-3 py-1 rounded-md bg-gray-400 dark:bg-teal-400 text-white cursor-pointer" 
+          <button type="button" className="text-[14px] sm:text-lg px-3 py-1 rounded-md bg-gray-400 dark:bg-teal-400 text-white cursor-pointer" 
         onClick={handleDownload}>
           Download</button>
         </div>
@@ -101,20 +101,20 @@ export default function TransactionsData({
           }
          
       </div>
-      <div className={`${isIncomePage && " grid-cols-2 gap-8"} grid gap-y-4 mt-4`}>
+      <div className={`${isIncomePage && "grid-cols-1 md:grid-cols-2 gap-8"} grid gap-y-4 mt-4`}>
         {getData?.map((d) => (
           <div
             key={d.id}
             className="flex justify-between items-center styleLink px-2 py-3 rounded-lg hover:bg-gray-100
              dark:hover:bg-gray-800 group "
           >
-            <div className="flex items-center gap-x-5">
+            <div className="flex items-center gap-x-3 sm:gap-x-5">
               <div className="bg-gray-200 size-11 rounded-full  cursor-default">
                 <p className="text-[25px] text-center">{d.emoji}</p>
               </div>
               <div>
-                <p className="text-[14px] font-semibold ">{d.category}</p>
-                <p className="text-[12px] font-medium text-gray-500">
+                <p className="text-[12px] sm:text-[14px] font-semibold ">{d.category}</p>
+                <p className="text-[10px] sm:text-[12px] font-medium text-gray-500">
                   {DateFormat(d.date)}
                 </p>
               </div>
@@ -128,7 +128,7 @@ export default function TransactionsData({
                 d.role === "income" ? "text-green-500 bg-green-100" : "text-red-500 bg-red-100"
               } flex items-center gap-x-2  rounded-lg  px-2`}
             >
-              <p className="flex items-center gap-x-2 p-1 cursor-default text-[14px] font-semibold">
+              <p className="flex items-center gap-x-2 p-1 cursor-default text-[12px] sm:text-[14px] font-semibold">
                 {d.role === "income" ? "+" : "-"} $
                 {d?.price.toLocaleString("en-In")}
                 {d.role === "income" ? (

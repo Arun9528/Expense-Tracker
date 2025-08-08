@@ -8,14 +8,12 @@ export default function ModalShow({ title }: { title: "Income" | "Expense" }) {
   return isModal ? (
       <Modal title={title} setIsModal={setIsModal} />
   ) :  (
-    <div>
       <button
         type="button"
-        className="text-purple-800 bg-purple-100 py-1 px-3 me-5 rounded-md font-semibold cursor-pointer"
+        className="text-purple-800 bg-purple-100 py-1 px-3 sm:me-5 text-[13px] sm:text-[16px] rounded-md font-semibold cursor-pointer"
         onClick={() => setIsModal(true)}
       >
-        <span className="text-[21px]">+</span> Add {title}
+        <span className="text-[14px] sm:text-[21px]">+</span> Add {title}
       </button>
-    </div>
   )
 }

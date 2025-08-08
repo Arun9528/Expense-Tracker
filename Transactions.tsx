@@ -1,7 +1,7 @@
 // type Role = "expense" | "income";
 export interface TransactionsProps{
   id:string;
-  role:string;
+  role:"income" | "expense";
   emoji:string;
   date:string;
   category:string;

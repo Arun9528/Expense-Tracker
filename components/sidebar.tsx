@@ -42,7 +42,7 @@ const handlelogout = ()=>{
                <GiPayMoney className="text-2xl"/>  
                <span className="text-lg">Expense</span> 
              </Link>
-            <button type="button" className={LinkStyle} onClick={handlelogout}>
+            <button type="button" className={`${LinkStyle} w-full`} onClick={handlelogout}>
               <IoIosLogOut className="text-2xl"/>  
               <span className="text-lg">Logout</span> 
             </button>
