@@ -13,6 +13,7 @@ type ModalProps = {
   title: "Income" | "Expense";
   setIsModal: React.Dispatch<React.SetStateAction<boolean>>;
 };
+type FormValues = Omit<TransactionsProps, "id" | "role">;
 export default function Modal({ title, setIsModal }: ModalProps) {
   const [isEmoji, setIsEmoji] = useState<boolean>(false);
   const [emoji, setEmoji] = useState<string>("");
@@ -22,10 +23,8 @@ export default function Modal({ title, setIsModal }: ModalProps) {
     handleSubmit,
     reset,setValue,
     formState: { errors },
-  } = useForm<TransactionsProps>({
+  } = useForm<FormValues>({
     defaultValues: {
-      id: "",
-      role: "",
       emoji: "",
       date: "",
       category: "",
@@ -33,8 +32,9 @@ export default function Modal({ title, setIsModal }: ModalProps) {
     },
     mode: "onChange",
   });
-  const onSubmit: SubmitHandler<TransactionsProps> = async(data) => {
-    const getdata = { ...data,id:crypto.randomUUID(),role:title.toLowerCase(),price:Number(data.price)}
+  const onSubmit: SubmitHandler<FormValues> = async(data) => {
+      const role: TransactionsProps["role"] = title === "Income" ? "income" : "expense";
+    const getdata = { ...data,id:crypto.randomUUID(),role,price:Number(data.price)}
       dispatch(addTransaction(getdata))
       reset();
       setEmoji("");
@@ -98,7 +98,7 @@ export default function Modal({ title, setIsModal }: ModalProps) {
             )}
           </div>
 
-          <Input<TransactionsProps>
+          <Input<FormValues,"category">
             label="category"
             type="text"
             placeholder="Rent,Groceries,etc"
@@ -108,7 +108,7 @@ export default function Modal({ title, setIsModal }: ModalProps) {
             }}
             error={errors.category}
           />
-          <Input<TransactionsProps>
+           <Input<FormValues, "price">
             label="price"
             type="number"
             placeholder="Please Enter Write"
@@ -116,7 +116,7 @@ export default function Modal({ title, setIsModal }: ModalProps) {
             validation={{ required: "Price is required " }}
             error={errors.price}
           />
-          <Input<TransactionsProps>
+           <Input<FormValues, "date">
             label="date"
             type="date"
             placeholder="date"
