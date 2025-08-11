@@ -3,17 +3,19 @@ import { RootState } from "@/store";
 import { seeMenu } from "@/store/slices/transactionSlice";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { GiPayMoney } from "react-icons/gi";
 import { IoIosLogOut, IoMdClose } from "react-icons/io";
 import { LuWalletMinimal } from "react-icons/lu";
 import { MdOutlineDashboard } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 export default function Sibebar(){
+const path = usePathname();
 const router = useRouter();
 const isMenu = useSelector((state:RootState)=> state.transactions.isMenu);
 const dispatch = useDispatch();
-const LinkStyle = "dark:border dark:hover:border-purple-700 hover:bg-purple-700 styleLink hover:text-white cursor-pointer rounded-md flex items-center py-2 justify-center gap-x-3 "
+const pathName  = path.split("/")[1]
+const LinkStyle = " dark:hover:border-purple-700 styleLink hover:text-white cursor-pointer rounded-md flex items-center py-2 justify-center gap-x-3 "
 const handleClose = ()=>{
    dispatch(seeMenu(false))
 }
@@ -30,19 +32,22 @@ const handlelogout = ()=>{
                 </div>
                 <p className="font-semibold text-2xl">John Doe</p>
             </div>
-           <Link href={"/dashboard"} className={LinkStyle} onClick={handleClose} >
+           <Link href={"/dashboard"} className={`${LinkStyle} ${pathName === "dashboard" ? "bg-purple-700 text-white" : 
+            "hover:bg-purple-700 dark:border"}`} onClick={handleClose} >
                <MdOutlineDashboard className="text-2xl"/>   
                <span className="text-lg">Dashboard</span> 
              </Link>
-            <Link href={"/income"} className={LinkStyle} onClick={handleClose} >
+            <Link href={"/income"} className={`${LinkStyle} ${pathName === "income" ? "bg-purple-700 text-white border-0" : 
+            "hover:bg-purple-700 dark:border"}`} onClick={handleClose} >
                <LuWalletMinimal className="text-2xl"/>  
                <span className="text-lg">Income</span> 
              </Link>
-           <Link href={"/expense"} className={LinkStyle} onClick={handleClose} >
+           <Link href={"/expense"} className={`${LinkStyle} ${pathName === "expense" ? "bg-purple-700 text-white" : 
+            "hover:bg-purple-700 dark:border"}`} onClick={handleClose} >
                <GiPayMoney className="text-2xl"/>  
                <span className="text-lg">Expense</span> 
              </Link>
-            <button type="button" className={`${LinkStyle} w-full`} onClick={handlelogout}>
+            <button type="button" className={`${LinkStyle} w-full hover:bg-purple-700 dark:border`} onClick={handlelogout}>
               <IoIosLogOut className="text-2xl"/>  
               <span className="text-lg">Logout</span> 
             </button>
