@@ -18,8 +18,8 @@ export default function Loginpage() {
     formState: { errors },
   } = useForm<loginProp>({
     defaultValues: {
-      email: "",
-      password: "",
+      email: "john.doe@gmail.com",
+      password: "11111111",
     },
     mode: "onChange",
   });
